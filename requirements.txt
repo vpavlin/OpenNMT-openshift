@@ -1,2 +1,2 @@
 OpenNMT-tf
-tensorflow
+tensorflow-gpu
