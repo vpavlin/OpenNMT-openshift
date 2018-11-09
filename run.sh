@@ -1,6 +1,6 @@
 #!/usr/bin/bash
 
-mkdir -p data jabberwocky models
+mkdir -p data jabberwocky
 [ -z "${SOURCE_TRAIN}" ] && SOURCE_TRAIN="https://raw.githubusercontent.com/OpenNMT/OpenNMT-py/master/data/src-train.txt"
 SOURCE_TRAIN_FILE="src-train.txt"
 [ -z "${TARGET_TRAIN}" ] && TARGET_TRAIN="https://raw.githubusercontent.com/OpenNMT/OpenNMT-py/master/data/tgt-train.txt"
@@ -31,7 +31,7 @@ function get_file() {
 [ -f "${DATA_DIR}/${TARGET_VOCAB_FILE}" ] || onmt-build-vocab ${DATA_DIR}/${TARGET_TRAIN_FILE} --save_vocab ${DATA_DIR}/${TARGET_VOCAB_FILE}
 
 onmt-main train --model_type Transformer --config reference-config.yaml --auto_config
-onmt-main export --export_dir_base models --config reference-config.yaml --auto_config
+onmt-main export --export_dir_base jabberwocky --config reference-config.yaml --auto_config
 ls jabberwocky
 ls models
 ls -R
