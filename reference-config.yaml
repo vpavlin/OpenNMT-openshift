@@ -3,8 +3,8 @@ model_dir: jabberwocky
 
 data:
   # (required for train_and_eval and train run types).
-  train_features_file: data/src-train.txt
-  train_labels_file: data/tgt-train.txt
+  train_features_file: data/src-val.txt
+  train_labels_file: data/tgt-val.txt
 
   # (optional) Pharaoh alignments of the training files.
   #train_alignments: data/alignments-train.txt
@@ -26,7 +26,7 @@ params:
   optimizer_params:
     beta1: 0.8
     beta2: 0.998
-  learning_rate: 1.0
+  learning_rate: 0.001
 
   # (optional) Global parameter initialization [-param_init, param_init].
   param_init: 0.1
@@ -117,7 +117,7 @@ train:
   save_summary_steps: 100
 
   # (optional) Train for this many steps. If not set, train forever.
-  train_steps: 1000000
+  train_steps: 10000
   # (optional) If true, makes a single pass over the training data (default: false).
   single_pass: false
 
