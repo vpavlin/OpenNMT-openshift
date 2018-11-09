@@ -1,5 +1,11 @@
 #!/usr/bin/bash
 
+if [ -n "${RUN_MODE}" ]; then
+    if [ "${RUN_MODE}"  == "serve" ]; then
+        exec ./serve.sh
+    fi
+fi
+
 mkdir -p data jabberwocky
 [ -z "${SOURCE_TRAIN}" ] && SOURCE_TRAIN="https://raw.githubusercontent.com/OpenNMT/OpenNMT-py/master/data/src-train.txt"
 SOURCE_TRAIN_FILE="src-train.txt"

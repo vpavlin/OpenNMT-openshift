@@ -56,6 +56,9 @@ items:
         - args:
           - ./run.sh
           image: "opennmt-openshift:latest"
+          env:
+          - name: "RUN_MODE"
+            value: "serve"
           imagePullPolicy: Always
           name: opennmt-openshift
           ports:
