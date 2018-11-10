@@ -6,7 +6,7 @@ if [ -n "${RUN_MODE}" ]; then
     fi
 fi
 
-mkdir -p data jabberwocky
+mkdir -p data jabberwocky/models
 [ -z "${SOURCE_TRAIN}" ] && SOURCE_TRAIN="https://raw.githubusercontent.com/OpenNMT/OpenNMT-py/master/data/src-train.txt"
 SOURCE_TRAIN_FILE="src-train.txt"
 [ -z "${TARGET_TRAIN}" ] && TARGET_TRAIN="https://raw.githubusercontent.com/OpenNMT/OpenNMT-py/master/data/tgt-train.txt"
@@ -38,7 +38,7 @@ function get_file() {
 
 tensorboard --logdir jabberwocky &
 onmt-main train --model_type Transformer --config reference-config.yaml --auto_config
-onmt-main export --export_dir_base jabberwocky --config reference-config.yaml --auto_config
+onmt-main export --export_dir_base jabberwocky/models --config reference-config.yaml --auto_config
 ls jabberwocky
-ls models
+#ls models
 ls -R
