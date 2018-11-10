@@ -36,6 +36,7 @@ function get_file() {
 [ -f "${DATA_DIR}/${SOURCE_VOCAB_FILE}" ] || onmt-build-vocab ${DATA_DIR}/${SOURCE_TRAIN_FILE} --save_vocab ${DATA_DIR}/${SOURCE_VOCAB_FILE}
 [ -f "${DATA_DIR}/${TARGET_VOCAB_FILE}" ] || onmt-build-vocab ${DATA_DIR}/${TARGET_TRAIN_FILE} --save_vocab ${DATA_DIR}/${TARGET_VOCAB_FILE}
 
+tensorboard --logdir jabberwocky &
 onmt-main train --model_type Transformer --config reference-config.yaml --auto_config
 onmt-main export --export_dir_base jabberwocky --config reference-config.yaml --auto_config
 ls jabberwocky
