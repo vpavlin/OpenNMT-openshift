@@ -1,0 +1,8 @@
+#!/usr/bin/bash
+
+mkdir -p /opt/app-root/src/
+cd /opt/app-root/src/
+pip install -r requirements.txt
+cp -R /tmp/src/* /opt/app-root/src/
+
+#fix-permissions /opt/app-root

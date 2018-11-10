@@ -71,11 +71,11 @@ items:
             limits:
               cpu: "12"
               memory: 24Gi
-              #nvidia.com/gpu: '4'
+              nvidia.com/gpu: '3'
             requests:
               cpu: "12"
               memory: 24Gi
-              #nvidia.com/gpu: '4'
+              nvidia.com/gpu: '3'
           terminationMessagePath: /dev/termination-log
           terminationMessagePolicy: File
           volumeMounts: 
@@ -121,8 +121,8 @@ items:
     strategy:
       sourceStrategy:
         from:
-          kind: ImageStreamTag
-          name: python-36-centos7:latest
+          kind: DockerImage
+          name: submod/tensorflow-serving-s2i-gpu
       type: Source
     successfulBuildsHistoryLimit: 5
     triggers:
