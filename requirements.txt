@@ -1,2 +1,2 @@
-OpenNMT-tf
+OpenNMT-tf==1.12.0
 tensorflow-gpu

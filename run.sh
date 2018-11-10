@@ -1,5 +1,11 @@
 #!/usr/bin/bash
 
+export LD_LIBRARY_PATH=${LD_LIBRARY_PATH}:/usr/local/cuda/lib64:/usr/local/cuda-10.0/compat/:/usr/lib64
+echo ${LD_LIBRARY_PATH}
+
+source scl_source enable rh-python36 && \
+    source /opt/app-root/bin/activate
+
 if [ -n "${RUN_MODE}" ]; then
     if [ "${RUN_MODE}"  == "serve" ]; then
         exec ./serve.sh
@@ -36,7 +42,7 @@ function get_file() {
 [ -f "${DATA_DIR}/${SOURCE_VOCAB_FILE}" ] || onmt-build-vocab ${DATA_DIR}/${SOURCE_TRAIN_FILE} --save_vocab ${DATA_DIR}/${SOURCE_VOCAB_FILE}
 [ -f "${DATA_DIR}/${TARGET_VOCAB_FILE}" ] || onmt-build-vocab ${DATA_DIR}/${TARGET_TRAIN_FILE} --save_vocab ${DATA_DIR}/${TARGET_VOCAB_FILE}
 
-tensorboard --logdir jabberwocky &
+tensorboard --logdir jabberwocky --port=8080 &
 onmt-main train --model_type Transformer --config reference-config.yaml --auto_config
 onmt-main export --export_dir_base jabberwocky/models --config reference-config.yaml --auto_config
 ls jabberwocky

@@ -1,0 +1,10 @@
+#!/usr/bin/bash
+
+mkdir -p /opt/app-root/src
+
+cp -R /tmp/src/* /opt/app-root/src
+
+source scl_source enable rh-python36 && \
+    source /opt/app-root/bin/activate && pip install -r /opt/app-root/src/requirements.txt
+
+#mv /tmp/src/.s2i/bin/run /opt/app-root/bin/run

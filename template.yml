@@ -123,6 +123,7 @@ items:
         from:
           kind: DockerImage
           name: submod/tensorflow-serving-s2i-gpu
+        forcePull: true
       type: Source
     successfulBuildsHistoryLimit: 5
     triggers:
